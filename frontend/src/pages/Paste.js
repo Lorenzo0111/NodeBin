@@ -25,6 +25,7 @@
 import React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import nightOwl from "../themes/nightOwl";
+import {backend} from "../config.json";
 
 class Paste extends React.Component {
     constructor(props) {
@@ -39,7 +40,7 @@ class Paste extends React.Component {
     }
 
     componentDidMount() {
-        fetch("http://localhost:3030/get/" + this.state.code)
+        fetch(backend + "/get/" + this.state.code)
             .then(res => res.json())
             .then(
                 (result) => {

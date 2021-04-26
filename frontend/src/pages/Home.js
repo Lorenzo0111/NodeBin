@@ -24,6 +24,7 @@
 
 import React from 'react';
 import {useHistory} from 'react-router-dom';
+import {backend} from '../config.json';
 
 let usedText = "";
 let history = null;
@@ -70,7 +71,7 @@ function save() {
         redirect: 'follow'
     };
 
-    fetch("http://localhost:3030/add", requestOptions)
+    fetch(backend + "/add", requestOptions)
         .then(response => response.json())
         .then(result => {
             if (result['error']) {

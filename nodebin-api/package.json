@@ -1,0 +1,26 @@
+{
+  "name": "nodebin-api",
+  "version": "1.0.0",
+  "description": "A library to interface with a nodebin backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lorenzo0111/Nodebin.git"
+  },
+  "keywords": [
+    "nodebin"
+  ],
+  "author": "Lorenzo0111",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lorenzo0111/Nodebin/issues"
+  },
+  "homepage": "https://github.com/Lorenzo0111/Nodebin#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "url": "^0.11.0"
+  }
+}

@@ -22,29 +22,20 @@
  * SOFTWARE.
  */
 
-const express = require('express');
-const app = express();
-const cors = require('cors');
-const config = require('../config.json')
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
-// Connect to mongodb
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
-mongoose.connect(config['mongo-uri'], {useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log("Connected to the MongoDB database"));
-
-const pasteSchema = new mongoose.Schema({
-  text: String
-});
-
-mongoose.model('Paste', pasteSchema);
-
-// express
-
-app.use(cors());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(require('./routes/pasteRouter'))
-
-app.listen(config["backend-port"], () => {
-  console.log("NodeBin Backend listening at " + config["backend-port"])
-});
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();

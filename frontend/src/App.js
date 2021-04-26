@@ -22,29 +22,34 @@
  * SOFTWARE.
  */
 
-const express = require('express');
-const app = express();
-const cors = require('cors');
-const config = require('../config.json')
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
+import React from 'react';
+import Home from './pages/Home';
+import Paste from './pages/Paste';
+import About from './pages/About';
+import Redirect from './Redirect';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
-// Connect to mongodb
+function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route exact={true} path="/source">
+        <Redirect link="https://github.com/Lorenzo0111/Nodebin"/>
+        </Route>
+        <Route exact={true} path="/about">
+          <About/>
+        </Route>
+        <Route path="/:code" component={Paste}/>
+        <Route exact={true} path="/">
+          <Home/>
+        </Route>
+      </Switch>
+    </Router>
+  );
+}
 
-mongoose.connect(config['mongo-uri'], {useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log("Connected to the MongoDB database"));
-
-const pasteSchema = new mongoose.Schema({
-  text: String
-});
-
-mongoose.model('Paste', pasteSchema);
-
-// express
-
-app.use(cors());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(require('./routes/pasteRouter'))
-
-app.listen(config["backend-port"], () => {
-  console.log("NodeBin Backend listening at " + config["backend-port"])
-});
+export default App;

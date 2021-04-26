@@ -22,29 +22,28 @@
  * SOFTWARE.
  */
 
-const express = require('express');
-const app = express();
-const cors = require('cors');
-const config = require('../config.json')
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
+import React from 'react';
+import ReactMarkdown from 'react-markdown'
 
-// Connect to mongodb
+const text = `
+Nodebin
+===
 
-mongoose.connect(config['mongo-uri'], {useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log("Connected to the MongoDB database"));
+## What is Nodebin?
 
-const pasteSchema = new mongoose.Schema({
-  text: String
-});
+Nodebin is an [OpenSource](/source) NodeJS Paste Server.
 
-mongoose.model('Paste', pasteSchema);
+## How can I create my own Nodebin server?
 
-// express
+Just [host it](/host)
+`;
 
-app.use(cors());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(require('./routes/pasteRouter'))
+function About() {
+    return (
+        <div className="result">
+            <ReactMarkdown children={text}/>
+        </div>
+    );
+}
 
-app.listen(config["backend-port"], () => {
-  console.log("NodeBin Backend listening at " + config["backend-port"])
-});
+export default About;

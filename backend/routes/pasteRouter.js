@@ -26,6 +26,8 @@ const express = require('express');
 const app = express.Router();
 const mongoose = require('mongoose');
 const sanitize = require('mongo-sanitize');
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 
 const Paste = mongoose.model('Paste');
 
@@ -72,7 +74,7 @@ app.get('/get/:id', (req, res) => {
 
 })
 
-app.post('/add', (req, res) => {
+app.post('/add', jsonParser, (req, res) => {
   const body = req.body;
   const text = body["text"];
 

@@ -1,0 +1,247 @@
+/*
+ * This file is part of NodeBin, licensed under the MIT License.
+ *
+ * Copyright (c) Lorenzo0111
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+
+html {
+  max-height: 100vh;
+  min-height: 100vh;
+}
+body {
+  min-height: 10vh
+}
+div.editor,
+div#root {
+  height: 100%;
+}
+body {
+  position: absolute;
+  top: 0;
+  bottom:0;
+  right:0;
+  left:0;
+  padding: 40px 0 53px 10px;
+  overflow-y: hidden;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(47, 49, 54);
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+*:focus {
+  outline: none;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgb(41, 43, 47);
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(37, 37, 38);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(240, 189, 7, 0.5);
+  cursor: pointer;
+}
+a:link {
+  color: rgb(150, 150, 150);
+  transition: 0s;
+  text-decoration: none;
+}
+a:visited {
+  color: rgb(150, 150, 150);
+  transition: 0s;
+}
+a:active {
+  color: rgb(150, 150, 150);
+  transition: 0s;
+}
+.save {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 18px;
+  padding: 10px 15px;
+  display: inline-block;
+  margin: 0;
+  color: rgb(150, 150, 150);
+  background-color: transparent;
+  transition: color 500ms;
+  border: none;
+  z-index: 1;
+}
+.save:hover {
+  cursor: pointer;
+  color: rgb(185, 185, 185);
+  transition: color 500ms;
+}
+#navbar {
+  background-color: rgb(37, 37, 38);
+  top: 0;
+  left: 0;
+  position: fixed;
+  width: 100%;
+  color: rgb(150, 150, 150);
+  height: auto;
+  display: inline-block;
+  padding: 0;
+  z-index: 1;
+}
+#navbar a {
+  font-size: 18px;
+  padding: 7px 15px 10px;
+  display: inline-block;
+  margin: 0;
+  transition: color 500ms;
+}
+
+#navbar a:hover {
+  cursor: pointer;
+  color: rgb(240, 189, 7);
+  transition: color 500ms;
+}
+#navbar .links {
+  margin-left: 100px;
+  display: inline-block;
+}
+#navbar .options {
+  float: right;
+}
+#navbar .title {
+  text-align: center;
+  color: white;
+  top: -1px;
+  position: absolute;
+  font-size: 18px;
+  padding: 7px 15px 10px;
+  display: inline-block;
+  margin: 0;
+}
+#navbar .title::before {
+  display: inline-block;
+  border: 3px solid rgb(240, 189, 7);
+  border-right: none;
+  border-bottom: none;
+  content: "";
+  height: 6px;
+  width: 6px;
+  padding-top: 14px;
+  padding-left: 15px;
+  margin-left: -5px;
+  position: absolute;
+  top: 7px;
+}
+#navbar .title::after {
+  display: inline-block;
+  border: 3px solid rgb(240, 189, 7);
+  border-left: none;
+  border-top: none;
+  content: "";
+  height: 4px;
+  width: 6px;
+  padding-top: 16px;
+  padding-left: 15px;
+  left: 66px;
+  position: absolute;
+  top: 10px;
+}
+#navbar .title:hover {
+  cursor: pointer;
+}
+textarea[name="textarea"],
+div.result {
+  padding: 10px 0 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  color: white;
+  border: none;
+  resize: none;
+  font-size: 18px;
+  z-index: 0;
+}
+
+.footer {
+  display: inline-block;
+  width: 100%;
+  border-top: 2px solid rgb(37, 37, 38);
+  background-color:rgb(37, 37, 38);
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+div.result {
+  font-family: Consolas, serif;
+  list-style: none;
+  counter-reset: lines-counter;
+  padding-left: 0;
+  overflow-y: scroll;
+}
+div.result::after {
+  width: 50px;
+  border-right: 2px solid rgb(37, 37, 38);
+  background-color: white;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+div.result p {
+  counter-increment: lines-counter;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/*
+
+TODO
+
+div.result p::before {
+    content: counter(lines-counter);
+    text-align: right;
+    color: rgb(150, 150, 150);
+    padding-right: 17px;
+    font-size: 19px;
+    border-right: 2px solid rgb(37, 37, 38);
+    display: inline-block;
+    width: 50px;
+    margin-right: 5px;
+}
+
+*/
+
+.footer span {
+  text-decoration: underline;
+  color: white;
+  transition: color 500ms;
+}
+.footer span:hover {
+  color: rgb(240, 189, 7);
+  transition: color 500ms;
+  cursor: pointer;
+}

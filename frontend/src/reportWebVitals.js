@@ -22,29 +22,16 @@
  * SOFTWARE.
  */
 
-const express = require('express');
-const app = express();
-const cors = require('cors');
-const config = require('../config.json')
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
+const reportWebVitals = onPerfEntry => {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+      getCLS(onPerfEntry);
+      getFID(onPerfEntry);
+      getFCP(onPerfEntry);
+      getLCP(onPerfEntry);
+      getTTFB(onPerfEntry);
+    });
+  }
+};
 
-// Connect to mongodb
-
-mongoose.connect(config['mongo-uri'], {useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log("Connected to the MongoDB database"));
-
-const pasteSchema = new mongoose.Schema({
-  text: String
-});
-
-mongoose.model('Paste', pasteSchema);
-
-// express
-
-app.use(cors());
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(require('./routes/pasteRouter'))
-
-app.listen(config["backend-port"], () => {
-  console.log("NodeBin Backend listening at " + config["backend-port"])
-});
+export default reportWebVitals;

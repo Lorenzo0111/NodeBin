@@ -25,13 +25,8 @@
 import React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import nightOwl from "../themes/nightOwl";
-import config from "../config.json";
 
 let backend = "http://localhost:3030";
-
-if (config && config.backend) {
-    backend = config.backend;
-}
 
 if (process.env.BACKEND) {
     backend = process.env.BACKEND;

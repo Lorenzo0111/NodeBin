@@ -24,7 +24,12 @@
 
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-import {backend} from '../config.json';
+
+let backend = "http://localhost:3030";
+
+if (process.env.BACKEND) {
+    backend = process.env.BACKEND;
+}
 
 let usedText = "";
 let history = null;

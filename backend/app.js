@@ -25,13 +25,14 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const config = require('../config.json')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
+require('dotenv').config();
+
 // Connect to mongodb
 
-mongoose.connect(config['mongo-uri'], {useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log("Connected to the MongoDB database"));
+mongoose.connect(process.env.MONGODB, {useNewUrlParser: true, useUnifiedTopology: true}).then(() => console.log("Connected to the MongoDB database"));
 
 const pasteSchema = new mongoose.Schema({
   text: String
@@ -45,6 +46,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(require('./routes/pasteRouter'))
 
-app.listen(config["backend-port"], () => {
-  console.log("NodeBin Backend listening at " + config["backend-port"])
+const PORT = process.env.PORT || 3030;
+app.listen(PORT, () => {
+  console.log(`NodeBin Backend listening at ${PORT}`)
 });

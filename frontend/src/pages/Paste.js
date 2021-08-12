@@ -26,11 +26,7 @@ import React from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import nightOwl from "../themes/nightOwl";
 
-let backend = "http://localhost:3030";
-
-if (process.env.BACKEND) {
-    backend = process.env.BACKEND;
-}
+const backend =  process.env.BACKEND || "http://localhost:3030";
 
 class Paste extends React.Component {
     constructor(props) {

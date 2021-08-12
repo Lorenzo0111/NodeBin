@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - 7
+
+before_install:
+  - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version version-number
+  - export PATH="$HOME/.yarn/bin:$PATH"
+
+jobs:
+  include:
+    - stage: backend
+      script: cd backend && npm ci
+    - stage: scan
+      script: cd frontend && npm ci

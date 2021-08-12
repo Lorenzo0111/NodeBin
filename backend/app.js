@@ -40,9 +40,12 @@ const pasteSchema = new mongoose.Schema({
 
 mongoose.model('Paste', pasteSchema);
 
-// express
+let corsOptions = {
+  origin: '*'
+};
 
-app.use(cors());
+app.use(helmet());
+app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(require('./routes/pasteRouter'))
 

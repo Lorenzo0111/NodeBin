@@ -13,6 +13,6 @@
     "express": "^4.17.3",
     "helmet": "^5.0.2",
     "mongo-sanitize": "^1.1.0",
-    "mongoose": "^6.2.5"
+    "mongoose": "^6.2.10"
   }
 }

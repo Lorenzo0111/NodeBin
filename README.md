@@ -6,6 +6,8 @@
 
 Open source NodeJS Paste Service
 
+> This project has been deprecated and I won't maintain it.
+
 ---
 
 ## Installing
